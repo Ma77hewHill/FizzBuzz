@@ -8,8 +8,8 @@ function getValues(){
     let buzzValue= document.getElementById("buzzValue").value;
 
     //parse for numbers 
-    fizzValue = ParseInt(fizzValue);
-    buzzValue = ParseInt(buzzValue);
+    fizzValue = parseInt(fizzValue);
+    buzzValue = parseInt(buzzValue);
 
     //check that they are integers 
     if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
@@ -27,7 +27,7 @@ function fizzBuzz(fizzValue, buzzValue){
     let returnArray = [];
 
     //loop from 1 to 100 
-    for (let i = 1; i <= 100; index++) {
+    for (let i = 1; i <= 100; i++) {
     //check to see if divisible by both (3 and 5)
     //check to see if divisible by fizz value (3)
     //check to see if divisible by buzz value (5)

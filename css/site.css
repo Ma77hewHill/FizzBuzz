@@ -1,7 +1,7 @@
 
 :root{
-    --primary-color: #6495ED;
-    --secondary-color: #ff993b;
+    --primary-color: #d5a6ff;
+    --secondary-color:#9aebd5 ; 
     --dark-color: #292929;
     --white-color: #ffffff;
 }
@@ -12,6 +12,10 @@ body{
 
 nav{
     background-color: var(--dark-color);
+}
+
+.nav-logo{
+    border-radius: 50px;
 }
 
 footer{

@@ -14,7 +14,7 @@ function getValues(){
     //check that they are integers 
     if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
         //call fizzbuzz
-        let fbArray = fizzBuzz(fizzValue,buzzValue);
+        let fbArray = fizzBuzz(fizzValue, buzzValue);
         //call displayData
         displayData(fbArray);
     }else{
@@ -32,18 +32,18 @@ function fizzBuzz(fizzValue, buzzValue){
     //check to see if divisible by fizz value (3)
     //check to see if divisible by buzz value (5)
         if(i % fizzValue == 0 && i % buzzValue == 0){
-            returnArray.push('Fizz Buzz');
+            returnArray.push('FizzBuzz');
         }else if(i % fizzValue == 0){
-            returnArray.push('fizz');
+            returnArray.push('Fizz');
         }else if(i % buzzValue == 0){
-            returnArray.push('buzz');
+            returnArray.push('Buzz');
         }else{
             returnArray.push(i);
         }
 
        }
 
-    returnArray;
+    return returnArray;
 }
 
 function displayData(fbArray){
@@ -62,11 +62,20 @@ function displayData(fbArray){
 
         //grab just the td's to put into array 
         let rowCols = tableRow.querySelectorAll("td");
-        rowCols[0].textContent = fbData[i];
-        rowCols[1].textContent = fbData[i+1];
-        rowCols[2].textContent = fbData[i+2];
-        rowCols[3].textContent = fbData[i+3];
-        rowCols[4].textContent = fbData[i+4];
+        rowCols[0].classList.add(fbArray[index]);
+        rowCols[0].textContent = fbArray[index];
+        
+        rowCols[1].classList.add(fbArray[index + 1]);
+        rowCols[1].textContent = fbArray[index+ 1];
+
+        rowCols[2].classList.add(fbArray[index + 2]);
+        rowCols[2].textContent = fbArray[index+ 2];
+
+        rowCols[3].classList.add(fbArray[index + 3]);
+        rowCols[3].textContent = fbArray[index+ 3];
+
+        rowCols[4].classList.add(fbArray[index + 4]);
+        rowCols[4].textContent = fbArray[index+ 4];
 
         tableBody.appendChild(tableRow);
     }

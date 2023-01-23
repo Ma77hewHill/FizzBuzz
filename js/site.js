@@ -23,6 +23,7 @@ function getValues(){
     
 }
 
+//standard loop with if/else statement
 function fizzBuzz(fizzValue, buzzValue){
     let returnArray = [];
 
@@ -44,6 +45,53 @@ function fizzBuzz(fizzValue, buzzValue){
        }
 
     return returnArray;
+}
+
+//switch case statement 
+function fizzBuzzB(fizzValue, buzzValue){
+    let returnArray = [];
+    let fizz = false;
+    let buzz = false;
+
+    for (let i = 0; i <= 100; i++) {
+        
+        fizz = i % fizzValue ==0;
+        buzz = i % buzzValue ==0;
+
+        switch(true){
+            case fizz && buzz:{
+                returnArray.push('FizzBuzz');
+                break;
+            }
+            case fizz:{
+                returnArray.push('Fizz');
+                break;
+            }
+            case buzz:{
+                returnArray.push('Buzz');
+                break;
+            }
+            default:{
+                returnArray.push(i);
+                break;
+            }
+        }
+        
+    }
+    return returnArray;
+}
+
+//terenary operators
+function fizzBuzzC(fizzValue, buzzValue){
+    let returnArray = [];
+
+    for (let i = 1; i <= 100; i++){
+        
+        let value = ((i%fizzValue == 0 ? 'Fizz' : '') + (i% buzzValue == 0 ? 'Buzz' : '') || i)
+        returnArray.push(value);
+    }
+
+    return returnArray
 }
 
 function displayData(fbArray){

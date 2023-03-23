@@ -54,16 +54,153 @@
         <div class="row row-cols-1 row-cols-md-2">
             <div class="col-md-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                    //Call Hello World 
-                        function HelloWorld(){
-                        alert("Hello World");
+                    //get the values from the user. Get the fizz and buzz value. 
+
+                    function getValues(){
+                    
+                        //get the user values from the page (html page)
+                    
+                        let fizzValue = document.getElementById("fizzValue").value;
+                        let buzzValue= document.getElementById("buzzValue").value;
+                    
+                        //parse for numbers 
+                        fizzValue = parseInt(fizzValue);
+                        buzzValue = parseInt(buzzValue);
+                    
+                        //check that they are integers 
+                        if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
+                            //call fizzbuzz
+                            let fbArray = fizzBuzz(fizzValue, buzzValue);
+                            //call displayData
+                            displayData(fbArray);
+                        }else{
+                            alert("You Must Enter Numbers");
+                        } 
+                        
+                    }
+                    
+                    //standard loop with if/else statement
+                    function fizzBuzz(fizzValue, buzzValue){
+                        let returnArray = [];
+                    
+                        //loop from 1 to 100 
+                        for (let i = 1; i <= 100; i++) {
+                        //check to see if divisible by both (3 and 5)
+                        //check to see if divisible by fizz value (3)
+                        //check to see if divisible by buzz value (5)
+                            if(i % fizzValue == 0 && i % buzzValue == 0){
+                                returnArray.push('FizzBuzz');
+                            }else if(i % fizzValue == 0){
+                                returnArray.push('Fizz');
+                            }else if(i % buzzValue == 0){
+                                returnArray.push('Buzz');
+                            }else{
+                                returnArray.push(i);
+                            }
+                    
+                           }
+                    
+                        return returnArray;
+                    }
+                    
+                    //switch case statement 
+                    function fizzBuzzB(fizzValue, buzzValue){
+                        let returnArray = [];
+                        let fizz = false;
+                        let buzz = false;
+                    
+                        for (let i = 0; i <= 100; i++) {
+                            
+                            fizz = i % fizzValue ==0;
+                            buzz = i % buzzValue ==0;
+                    
+                            switch(true){
+                                case fizz && buzz:{
+                                    returnArray.push('FizzBuzz');
+                                    break;
+                                }
+                                case fizz:{
+                                    returnArray.push('Fizz');
+                                    break;
+                                }
+                                case buzz:{
+                                    returnArray.push('Buzz');
+                                    break;
+                                }
+                                default:{
+                                    returnArray.push(i);
+                                    break;
+                                }
+                            }
+                            
+                        }
+                        return returnArray;
+                    }
+                    
+                    //terenary operators
+                    function fizzBuzzC(fizzValue, buzzValue){
+                        let returnArray = [];
+                    
+                        for (let i = 1; i <= 100; i++){
+                            
+                            let value = ((i%fizzValue == 0 ? 'Fizz' : '') + (i% buzzValue == 0 ? 'Buzz' : '') || i)
+                            returnArray.push(value);
+                        }
+                    
+                        return returnArray
+                    }
+                    
+                    function displayData(fbArray){
+                    
+                        //get the table body element from the page 
+                        let tableBody = document.getElementById("results");
+                    
+                        //get the template row
+                        let templateRow = document.getElementById("fbTemplate");
+                    
+                        //clear the table first
+                        tableBody.innerHTML = "";
+                    
+                        for (let index = 0; index < fbArray.length; index +=5) {
+                            let tableRow = document.importNode(templateRow.content, true)
+                    
+                            //grab just the td's to put into array 
+                            let rowCols = tableRow.querySelectorAll("td");
+                            rowCols[0].classList.add(fbArray[index]);
+                            rowCols[0].textContent = fbArray[index];
+                            
+                            rowCols[1].classList.add(fbArray[index + 1]);
+                            rowCols[1].textContent = fbArray[index+ 1];
+                    
+                            rowCols[2].classList.add(fbArray[index + 2]);
+                            rowCols[2].textContent = fbArray[index+ 2];
+                    
+                            rowCols[3].classList.add(fbArray[index + 3]);
+                            rowCols[3].textContent = fbArray[index+ 3];
+                    
+                            rowCols[4].classList.add(fbArray[index + 4]);
+                            rowCols[4].textContent = fbArray[index+ 4];
+                    
+                            tableBody.appendChild(tableRow);
+                        }
+                    
+                        //add all the rows to the table. 
+                    
                     }
                 </code></pre>
             </div>
             <div class="col-md-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                <h5>Fizzbuzz</h5>
+                <p>A Javascript Coding Exercise using loops. Write a program that prints the numbers from 1 to 100 and for multiples of 3 display 'fizz' and multiples of 5 display 'buzz'. If a multiple of both display 'FizzBuzz'.</p>
+                <h5>How does it work?</h5>
+                <p>The program starts by taking input from the user, using the <strong>getValues</strong></p>
+                <p>Next, the program checks to make sure the user has entered only numbers. If not, an appropriate message is displayed to the screen. Otherwise, the program continues</p>
+                <p>If the user has entered an integer, then the <strong>fizzbuzz</strong> function is called</p>
+                <p>I have written <strong>three</strong> functions which perform the same action <strong>fizzbuzz, fizzbuzzB and fizzBuzzC</strong></p>
+                <p><strong>fizzbuzz </strong>uses a <strong>for loop</strong></p>
+                <p><strong>fizzbuzzB </strong> uses a <strong>switch case statement</strong></p>
+                <p><strong>fizzbuzzC </strong>uses <strong>terenary operators</strong></p>
+                <p>Finally, the table is displayed to the page via the <strong>displayData</strong> function</p>
             </div>
         </div>
     </div>
@@ -76,7 +213,7 @@
             <div><span class="text-mute">&copy;2023</span> Matthew Hill | matthewhill93@outlook.com</div>
         </div>
         <div class="col d-flex align-items-center justify-content-start justify-content-md-center">
-            <img src="/img/mhBgTrans.svg" alt="Matthew Hill Logo" height="24"> <!--Insert Logo once it has been created-->
+            <img src="/img/mhBgTrans.svg" alt="Matthew Hill Logo" height="18"> <!--Insert Logo once it has been created-->
         </div>
         <div class="col d-flex align-items-center justify-content-start justify-content-md-end">
             <div class="row">
